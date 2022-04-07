@@ -1,5 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Macro for Unity YAML-based asset files.
+[attr]unityyaml -text merge=unityyamlmerge diff -whitespace
 # 3D models
 *.3dm filter=lfs diff=lfs merge=lfs -text
 *.3ds filter=lfs diff=lfs merge=lfs -text
@@ -50,7 +52,7 @@
 # Collapse Unity-generated files on GitHub
 *.asset linguist-generated
 *.mat linguist-generated
-*.meta linguist-generated
+*.meta unityyaml binary linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
 *.aar filter=lfs diff=lfs merge=lfs -text
