@@ -1,22 +1,43 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private Camera cam;
+    
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private Vector2 lookDirection;
+    private Vector2 mousePosition;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
         HandleInput();
     }
 
-    private void HandleInput()
+    private void FixedUpdate()
     {
-        var movementVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        MovePlayer(movementVector);
+        MoveAndRotatePlayer(movement, lookDirection);
     }
 
-    private void MovePlayer(Vector3 movementVector)
+    private void HandleInput()
     {
-        transform.position += movementVector * (moveSpeed * Time.deltaTime);
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        lookDirection = mousePosition - rb.position;
+    }
+
+    private void MoveAndRotatePlayer(Vector2 movementVector, Vector2 rotationVector)
+    {
+        rb.MovePosition(rb.position + movementVector * moveSpeed * Time.deltaTime);
+
+        var angle = Mathf.Atan2(rotationVector.y, rotationVector.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 }
