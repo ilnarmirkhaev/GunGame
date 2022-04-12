@@ -1,36 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStupid : MonoBehaviour
 {
-    public Transform player;
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
+    private GameObject player;
+    private Rigidbody2D playerRB;
 
     private Rigidbody2D rb;
-    private Vector2 movement;
-    void Start()
+    private Vector2 lookDirection;
+
+    private void Awake()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
+        playerRB = player.GetComponent<Rigidbody2D>();
     }
-    
-    void Update()
+
+    private void Update()
     {
-        Vector3 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
-        movement = direction;
+        lookDirection = (playerRB.position - rb.position).normalized;
     }
 
     private void FixedUpdate()
     {
-        MoveCharacter(movement);
+        MoveAndRotateCharacter(lookDirection);
     }
 
-    void MoveCharacter(Vector2 direction)
+    private void MoveAndRotateCharacter(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+        rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+        
+        var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.GetComponent<Bullet>() != null)
+            Destroy(gameObject);
     }
 }
