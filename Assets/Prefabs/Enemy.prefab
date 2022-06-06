@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  xpPrefab: {fileID: 8156312871754336390, guid: 0d3ef2335a417b249839072fa2993275, type: 3}
 --- !u!114 &6343833784097995263
 MonoBehaviour:
   m_ObjectHideFlags: 0
