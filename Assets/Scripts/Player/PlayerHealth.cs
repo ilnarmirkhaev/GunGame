@@ -1,4 +1,6 @@
-﻿namespace Player
+﻿using Core;
+
+namespace Player
 {
     public class PlayerHealth : CharacterHealth
     {
