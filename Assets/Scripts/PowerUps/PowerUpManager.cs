@@ -6,12 +6,14 @@ namespace PowerUps
 {
     public class PowerUpManager : MonoBehaviour
     {
+        [SerializeField] private GameObject powerUpPanel;
+        
         [SerializeField] private List<PowerUp> powerUpPool;
-        private Dictionary<PowerUp.Type, int> activePowerUps;
+        private Dictionary<PowerUp, int> activePowerUps;
 
         private void Awake()
         {
-            activePowerUps = new Dictionary<PowerUp.Type, int>();
+            activePowerUps = new Dictionary<PowerUp, int>();
         }
 
         private void OnEnable()
@@ -26,7 +28,7 @@ namespace PowerUps
 
         private void GivePowerUps()
         {
-            
+            powerUpPanel.SetActive(true);
         }
     }
 }
