@@ -4,7 +4,7 @@ namespace Player
 {
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        public Transform target;
         private const float CameraZCoordinate = -10f;
 
         private void Update()

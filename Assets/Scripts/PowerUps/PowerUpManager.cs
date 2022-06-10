@@ -29,6 +29,14 @@ namespace PowerUps
         private void GivePowerUps()
         {
             powerUpPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+        public void ChoosePowerUp(int index)
+        {
+            powerUpPanel.SetActive(false);
+            Time.timeScale = 1;
+            Debug.Log($"Chosen {index} powerup");
         }
     }
 }
