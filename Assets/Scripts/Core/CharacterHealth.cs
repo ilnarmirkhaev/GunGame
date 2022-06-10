@@ -23,7 +23,7 @@ namespace Core
             Health = maxHealth;
         }
 
-        public void TakeHit(float damage)
+        public virtual void TakeHit(float damage)
         {
             Health -= damage;
         }
