@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace Enemies
 {
@@ -12,7 +13,7 @@ namespace Enemies
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
-            target = GameObject.Find("Player").transform;
+            if (Camera.main != null) target = Camera.main.GetComponent<CameraController>().target;
         }
 
         private void Update()

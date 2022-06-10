@@ -1,4 +1,5 @@
-﻿using Enemies;
+﻿using System;
+using Enemies;
 using UnityEngine;
 
 namespace Player
@@ -8,33 +9,21 @@ namespace Player
         [SerializeField] private Transform attackPoint;
         [SerializeField] private float attackRange = 0.5f;
         [SerializeField] private LayerMask enemyLayer;
-        [SerializeField] private Transform sword;
-        [SerializeField] private float attackRate = 2f;
         [SerializeField] private float damage = 10f;
         [SerializeField] private float knockBack = 3f;
-        
-        
-        private float _attackFrequency;
-        private float _nextAttackTime;
 
-        private void Awake()
+        private void OnEnable()
         {
-            _attackFrequency = 1f / attackRate;
+            HeroKnight.OnAttacked += Attack;
         }
 
-        private void Update()
+        private void OnDisable()
         {
-            if (!(Time.time >= _nextAttackTime)) return;
-            if (!Input.GetButtonDown("Fire1")) return;
-            
-            Attack();
-            _nextAttackTime = Time.time + _attackFrequency;
+            HeroKnight.OnAttacked -= Attack;
         }
-
+        
         private void Attack()
         {
-            sword.RotateAround(transform.position, Vector3.forward, 60f);
-            
             var hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
             foreach (var enemy in hitEnemies)
             {
