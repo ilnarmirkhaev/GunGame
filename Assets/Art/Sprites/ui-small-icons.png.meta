@@ -1,19 +1,7 @@
 fileFormatVersion: 2
 guid: 497877696662aee47ba7434638be1ea7
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -5390123095117124330
-    second: ui-small-icons_0
-  - first:
-      213: -8880520576215733831
-    second: ui-small-icons_1
-  - first:
-      213: -3983950619504736678
-    second: ui-small-icons_2
-  - first:
-      213: -9176472066801411641
-    second: ui-small-icons_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -36,6 +24,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -92,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,11 +89,35 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61d2ae36a9f6235b0800000000000000
-      internalID: -5390123095117124330
+      spriteID: 0f0ef5c4d38d51848b9f63ec94881394
+      internalID: -1689412204
       vertices: []
       indices: 
       edges: []
@@ -150,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b92d12469d02c480800000000000000
-      internalID: -8880520576215733831
+      spriteID: dbd79c812266b6f449fe3d8350161084
+      internalID: 1544968554
       vertices: []
       indices: 
       edges: []
@@ -171,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5609b9f40a26b8c0800000000000000
-      internalID: -3983950619504736678
+      spriteID: 8377245c5d1003940a23496c0cdb8a81
+      internalID: 835903413
       vertices: []
       indices: 
       edges: []
@@ -192,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c9d107364f96a080800000000000000
-      internalID: -9176472066801411641
+      spriteID: 6552f1176c8640a44baaa991606f50ba
+      internalID: -772843622
       vertices: []
       indices: 
       edges: []
@@ -208,6 +221,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ui-small-icons_2: 835903413
+      ui-small-icons_0: -1689412204
+      ui-small-icons_3: -772843622
+      ui-small-icons_1: 1544968554
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

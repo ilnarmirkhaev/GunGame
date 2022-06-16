@@ -294,6 +294,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2272,6 +2273,97 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      HeroKnightBearded_50: 4188281866401583996
+      HeroKnightBearded_62: -3084657887050620670
+      HeroKnightBearded_25: 1348650748090989784
+      HeroKnightBearded_18: 1607686139766878076
+      HeroKnightBearded_79: 6638621101765315899
+      HeroKnightBearded_0: 1260886121557696376
+      HeroKnightBearded_84: 5681211659524055113
+      HeroKnightBearded_71: 2777476216641840712
+      HeroKnightBearded_3: -6889171018489891659
+      HeroKnightBearded_31: -4365172307471402568
+      HeroKnightBearded_52: 267185828713583610
+      HeroKnightBearded_70: -292628297544437237
+      HeroKnightBearded_61: 4674125324840240978
+      HeroKnightBearded_19: 4246417883599140991
+      HeroKnightBearded_77: 1498005189211253304
+      HeroKnightBearded_53: -4696026416272164231
+      HeroKnightBearded_59: 370160954029329339
+      HeroKnightBearded_28: -4666115861510825403
+      HeroKnightBearded_43: 6419329520404421355
+      HeroKnightBearded_2: -8547734341605088496
+      HeroKnightBearded_12: 631582501473517173
+      HeroKnightBearded_80: -338775382899160481
+      HeroKnightBearded_24: 1356289705883048773
+      HeroKnightBearded_29: -8021934321695191275
+      HeroKnightBearded_36: 2160478812708992368
+      HeroKnightBearded_40: -5255253691124821145
+      HeroKnightBearded_8: -8115455672898648200
+      HeroKnightBearded_57: 2524676386747896802
+      HeroKnightBearded_85: 2787237254315265156
+      HeroKnightBearded_16: 5549777235843858612
+      HeroKnightBearded_88: -6277192980386464315
+      HeroKnightBearded_51: -5346330107421048032
+      HeroKnightBearded_75: -5425183532536181317
+      HeroKnightBearded_17: -1190024787010411099
+      HeroKnightBearded_22: -5385653457269862627
+      HeroKnightBearded_10: 1924328803828837812
+      HeroKnightBearded_34: 5830259192675766060
+      HeroKnightBearded_74: 4710057451768016936
+      HeroKnightBearded_1: 6940686584947128040
+      HeroKnightBearded_41: 769161938649975360
+      HeroKnightBearded_37: -4760752019063412751
+      HeroKnightBearded_66: -5319792271019060193
+      HeroKnightBearded_82: -1873461720941726010
+      HeroKnightBearded_67: -5056351063257884204
+      HeroKnightBearded_27: -4829654858872454133
+      HeroKnightBearded_58: 4152613375203288816
+      HeroKnightBearded_69: 1243758310448859452
+      HeroKnightBearded_73: -6722093635907888504
+      HeroKnightBearded_30: -4942770454930519698
+      HeroKnightBearded_32: 2472465259919703351
+      HeroKnightBearded_15: -204974603114028215
+      HeroKnightBearded_13: -3463280438542806398
+      HeroKnightBearded_5: -1525734536882655867
+      HeroKnightBearded_76: -2759521473745860004
+      HeroKnightBearded_89: -7437242079373310661
+      HeroKnightBearded_83: 6361593009347966673
+      HeroKnightBearded_60: 1689886299635725596
+      HeroKnightBearded_9: -8791545816051143297
+      HeroKnightBearded_47: -875558132652200012
+      HeroKnightBearded_14: 4542884657821136290
+      HeroKnightBearded_63: 7098258908300244592
+      HeroKnightBearded_72: 4898307852808214670
+      HeroKnightBearded_65: -8532916964486618632
+      HeroKnightBearded_6: 6802032364383322058
+      HeroKnightBearded_35: 1128503699242755574
+      HeroKnightBearded_86: -7273494938241686390
+      HeroKnightBearded_64: -2310376457402264288
+      HeroKnightBearded_81: -2496566714590371779
+      HeroKnightBearded_26: 1189369624663537893
+      HeroKnightBearded_45: -3749136282476784224
+      HeroKnightBearded_7: -5151945935982508379
+      HeroKnightBearded_56: -2261355854873609454
+      HeroKnightBearded_46: 250205919789482306
+      HeroKnightBearded_48: 4532866148515153052
+      HeroKnightBearded_54: -4734366328605630183
+      HeroKnightBearded_21: 286785867116375394
+      HeroKnightBearded_11: 5855660417832668114
+      HeroKnightBearded_68: 847900838800996886
+      HeroKnightBearded_55: 7598758959478556579
+      HeroKnightBearded_42: -89330165645977144
+      HeroKnightBearded_23: 8823225311529423121
+      HeroKnightBearded_33: 7543695459579621271
+      HeroKnightBearded_44: 1238333956181437393
+      HeroKnightBearded_20: -1945799088294112264
+      HeroKnightBearded_4: -6759774430006244977
+      HeroKnightBearded_78: 1195213327301242194
+      HeroKnightBearded_39: -3612567078212549110
+      HeroKnightBearded_38: -5460657903457412760
+      HeroKnightBearded_49: 6769530485879030976
+      HeroKnightBearded_87: -2547042219688288706
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
