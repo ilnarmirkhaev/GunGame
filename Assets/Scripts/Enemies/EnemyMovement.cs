@@ -20,6 +20,10 @@ namespace Enemies
         {
             if (!target) return;
             lookDirection = ((Vector2)target.position - rb.position).normalized;
+
+            var dot = Vector2.Dot(Vector2.left, lookDirection);
+
+            GetComponent<SpriteRenderer>().flipX = dot > 0;
         }
 
         private void FixedUpdate()
@@ -31,9 +35,6 @@ namespace Enemies
         private void MoveAndRotate(Vector2 direction)
         {
             rb.MovePosition(rb.position + direction * (moveSpeed * Time.deltaTime));
-        
-            var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
         }
     }
 }

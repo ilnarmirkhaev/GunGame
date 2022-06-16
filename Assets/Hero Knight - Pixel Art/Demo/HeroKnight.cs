@@ -7,24 +7,22 @@ public class HeroKnight : MonoBehaviour {
     [SerializeField] float      m_speed = 4.0f;
     [SerializeField] bool       m_noBlood = false;
     [SerializeField] private Transform attackPoint;
-    private Vector3 attackPosition;
-    
+
 
     private Animator            m_animator;
     private Rigidbody2D         m_body2d;
     private int                 m_facingDirection = 1;
-    private int                 m_currentAttack = 0;
-    private float               m_timeSinceAttack = 0.0f;
-    private float               m_delayToIdle = 0.0f;
+    private int                 m_currentAttack;
+    private float               m_timeSinceAttack;
+    private float               m_delayToIdle;
 
     public static event Action OnAttacked;
     private bool _isDead;
 
-    private void Awake ()
+    private void Awake()
     {
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
-        attackPosition = attackPoint.position;
     }
 
     private void OnEnable()
@@ -52,10 +50,9 @@ public class HeroKnight : MonoBehaviour {
         var inputY = Input.GetAxis("Vertical");
 
         var attackPointPosition = attackPoint.localPosition;
-        var attackX = attackPointPosition.x;
 
         // Swap direction of sprite depending on walk direction
-        if (inputX > 0)
+        if (inputX > 0 && m_facingDirection != 1)
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
@@ -64,7 +61,7 @@ public class HeroKnight : MonoBehaviour {
             attackPoint.localPosition = attackPointPosition;
         }
             
-        else if (inputX < 0)
+        else if (inputX < 0 && m_facingDirection != -1)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;

@@ -8,13 +8,13 @@ namespace Enemies
     {
         [SerializeField] private GameObject xpPrefab;
         
-        public static event Action OnDied;
+        public static event Action<GameObject> OnDied;
 
         protected override void Die()
         {
-            OnDied?.Invoke();
             Instantiate(xpPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            OnDied?.Invoke(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

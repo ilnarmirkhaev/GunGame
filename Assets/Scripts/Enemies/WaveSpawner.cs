@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,38 +9,44 @@ namespace Enemies
 {
     public class WaveSpawner : MonoBehaviour
     {
-        private enum SpawnState
+        [SerializeField] private GameObject enemyPrefab;
+        
+        [SerializeField] private Transform spawnPointsPool;
+        [SerializeField] private Transform enemyPool;
+
+        [SerializeField] private float spawnRate = 2f;
+        private int _spawnTime;
+        
+        [SerializeField] private int enemyCapacity = 30;
+        private Queue<GameObject> _enemiesToSpawn;
+
+        private List<Transform> _spawnPoints;
+
+        private bool _isSpawning;
+
+        private void Awake()
         {
-            Spawning,
-            Waiting,
-            Counting
+            _spawnTime = (int)(1000 / spawnRate);
+            
+            _spawnPoints = new List<Transform>();
+            foreach (Transform spawnPoint in spawnPointsPool)
+            {
+                _spawnPoints.Add(spawnPoint);
+            }
+
+            _enemiesToSpawn = new Queue<GameObject>();
+            for (var i = 0; i < enemyCapacity; i++)
+            {
+                var enemy = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity, enemyPool);
+                enemy.SetActive(false);
+                _enemiesToSpawn.Enqueue(enemy);
+            }
         }
-    
-        [System.Serializable]
-        public class Wave
-        {
-            public string name;
-            public GameObject enemy;
-            public int count;
-            public float spawnRate;
-        }
-
-        public Wave[] waves;
-        public Transform[] spawnPoints;
-        private int waveIndex = 0;
-
-        public float timeBetweenWaves = 3f;
-        private float waveCountdown;
-        private SpawnState state = SpawnState.Counting;
-
-        private int _aliveEnemies;
 
         private void Start()
         {
-            if (spawnPoints.Length == 0)
-                Debug.LogError("No spawn points referenced");
-        
-            waveCountdown = timeBetweenWaves;
+            if (_spawnPoints.Count == 0)
+                Debug.LogError("No spawn points found");
         }
 
         private void OnEnable()
@@ -51,70 +59,27 @@ namespace Enemies
             EnemyHealth.OnDied -= EnemyDied;
         }
 
-        private void EnemyDied()
+        private async void Update()
         {
-            _aliveEnemies--;
+            if (_enemiesToSpawn.Count != 0)
+                SpawnEnemy();
+            
+            await Task.Delay(_spawnTime);
         }
 
-        private void Update()
+        private void EnemyDied(GameObject enemy)
         {
-            if (state == SpawnState.Waiting)
-            {
-                if (!EnemyIsAlive())
-                    WaveCompleted();
-                return;
-            }
-        
-            if (waveCountdown <= 0)
-            {
-                if (state != SpawnState.Spawning)
-                {
-                    StartCoroutine(SpawnWaveCoroutine(waves[waveIndex]));
-                }
-            }
-            else
-            {
-                waveCountdown -= Time.deltaTime;
-            }
+            _enemiesToSpawn.Enqueue(enemy);
         }
 
-        private void WaveCompleted()
+        private void SpawnEnemy()
         {
-            Debug.Log("Wave Completed!");
-        
-            state = SpawnState.Counting;
-            waveCountdown = timeBetweenWaves;
-
-            if (waveIndex >= waves.Length - 1)
-            {
-                waveIndex = 0;
-                Debug.Log("ALL WAVES COMPLETE! Looping...");
-            }
-            else
-            {
-                waveIndex++;
-            }
-        }
-
-        private bool EnemyIsAlive() => _aliveEnemies > 0;
-
-        private IEnumerator SpawnWaveCoroutine(Wave wave)
-        {
-            Debug.Log("Spawning Wave: " + wave.name);
-            state = SpawnState.Spawning;
-            for (var i = 0; i < wave.count; i++)
-            {
-                SpawnEnemy(wave.enemy);
-                yield return new WaitForSeconds(1 / wave.spawnRate);
-            }
-            state = SpawnState.Waiting;
-        }
-
-        private void SpawnEnemy(GameObject enemy)
-        {
-            var sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-            Instantiate(enemy, sp.position, sp.rotation);
-            _aliveEnemies++;
+            var sp = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+            
+            var enemy = _enemiesToSpawn.Dequeue();
+            enemy.transform.position = sp.position;
+            enemy.transform.rotation = sp.rotation;
+            enemy.SetActive(true);
         }
     }
 }
